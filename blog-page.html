@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes — A Travel Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1B2B22;
+    --bg-soft: #223A2C;
+    --card: #F4EDE4;
+    --ink: #1F2A22;
+    --muted: #6B7C70;
+    --accent: #E8902E;
+    --accent-deep: #C76F1E;
+    --line: #E0D6C5;
+    --serif: 'Fraunces', serif;
+    --sans: 'Work Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle at 20% 0%, var(--bg-soft), var(--bg) 60%);
+    color: var(--card);
+    font-family: var(--sans);
+    line-height: 1.6;
+  }
+
+  .wrap{ max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  a{ color: inherit; }
+
+  /* ===== Top bar ===== */
+  header{
+    padding: 28px 0 0;
+    border-bottom: 1px solid rgba(244,237,228,0.12);
+  }
+  .top-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 22px;
+  }
+  .wordmark{
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span{ color: var(--accent); }
+  .subscribe{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(244,237,228,0.4);
+    padding: 9px 18px;
+    border-radius: 999px;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+  .subscribe:hover{
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #1B2B22;
+  }
+
+  /* ===== Hero ===== */
+  .hero{ padding: 56px 0 64px; max-width: 620px; }
+  .hero .eyebrow{
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    line-height: 1.25;
+    margin: 0 0 16px;
+  }
+  .hero p{
+    color: rgba(244,237,228,0.75);
+    font-size: 1.02rem;
+    margin: 0;
+  }
+
+  /* ===== Posts ===== */
+  .posts{
+    background-color: var(--bg);
+    padding-bottom: 70px;
+  }
+  .post-list{ display: flex; flex-direction: column; gap: 22px; }
+
+  .post{
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    background-color: var(--card);
+    color: var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .post:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.28);
+  }
+
+  .post-tab{
+    background-color: var(--bg-soft);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.06em;
+    padding: 18px 0;
+    transition: background-color 0.2s ease;
+  }
+  .post:hover .post-tab{
+    background-color: var(--accent);
+    color: #1B2B22;
+  }
+
+  .post-body{ padding: 26px 28px 28px; }
+  .post-meta{
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .post-meta .dot{ margin: 0 8px; }
+
+  .post h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 12px;
+  }
+  .post h2 a{
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-size: 0% 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.25s ease;
+    padding-bottom: 2px;
+  }
+  .post h2 a:hover{ background-size: 100% 2px; }
+
+  .post p.summary{
+    color: #3E4A41;
+    font-size: 0.96rem;
+    margin: 0 0 18px;
+    max-width: 560px;
+  }
+
+  .read-more{
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--accent-deep);
+    border-bottom: 1px solid transparent;
+  }
+  .read-more:hover{ border-color: var(--accent-deep); }
+
+  /* ===== Footer ===== */
+  footer{
+    border-top: 1px solid rgba(244,237,228,0.12);
+    padding: 24px 0 40px;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: rgba(244,237,228,0.55);
+    text-align: center;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 600px){
+    .top-row{ flex-direction: column; align-items: flex-start; gap: 14px; }
+    .post{ grid-template-columns: 1fr; }
+    .post-tab{
+      writing-mode: horizontal-tb;
+      padding: 8px 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top-row">
+    <div class="wordmark">Field<span>.</span>Notes</div>
+    <a href="#" class="subscribe">Subscribe</a>
+  </div>
+  <div class="wrap hero">
+    <p class="eyebrow">A travel journal</p>
+    <h1>Notes from the road, one small town at a time.</h1>
+    <p>Dispatches on slow travel, strange detours, and the places that don't make it into the guidebooks.</p>
+  </div>
+</header>
+
+<main class="posts">
+  <div class="wrap">
+    <div class="post-list">
+
+      <article class="post">
+        <div class="post-tab">01 — JUN</div>
+        <div class="post-body">
+          <p class="post-meta">Maya Lindqvist <span class="dot">·</span> June 3, 2026</p>
+          <h2><a href="#">The Bakery at the End of Calle Sol</a></h2>
+          <p class="summary">A wrong turn in a hillside town in Oaxaca led to a bakery that's been
+            making the same conchas for sixty years, run by a woman who insisted I stay for coffee
+            and didn't take no for an answer.</p>
+          <a href="#" class="read-more">Read the full entry →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="post-tab">02 — MAY</div>
+        <div class="post-body">
+          <p class="post-meta">Theo Park <span class="dot">·</span> May 21, 2026</p>
+          <h2><a href="#">What a Three-Hour Train Delay Taught Me</a></h2>
+          <p class="summary">Stranded at a rural station in northern Spain with no signal and no plan,
+            I ended up sharing a bottle of wine with three strangers who became the best part of the trip.</p>
+          <a href="#" class="read-more">Read the full entry →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="post-tab">03 — APR</div>
+        <div class="post-body">
+          <p class="post-meta">Maya Lindqvist <span class="dot">·</span> April 9, 2026</p>
+          <h2><a href="#">Notes on Sleeping in a Lighthouse</a></h2>
+          <p class="summary">For one night, a converted lighthouse on the edge of Scotland was the
+            quietest place I'd ever been — until the storm rolled in and the whole tower seemed to hum.</p>
+          <a href="#" class="read-more">Read the full entry →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Field Notes. A personal travel journal.</div>
+</footer>
+
+</body>
+</html>

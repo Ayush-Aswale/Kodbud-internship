@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f4f4f4;color:#333;line-height:1.6}
+header{background:#0077b6;color:#fff;text-align:center;padding:30px}
+header h1{margin-bottom:10px}
+section{width:80%;max-width:900px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+.about{display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.about img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #0077b6}
+h2{color:#0077b6;margin-bottom:15px}
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skills span{background:#0077b6;color:#fff;padding:8px 15px;border-radius:20px}
+.project{margin-bottom:15px;padding:10px;border-left:4px solid #0077b6;background:#f9f9f9}
+form{display:flex;flex-direction:column}
+input,textarea{padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:5px;font-size:16px}
+textarea{height:120px;resize:none}
+button{background:#0077b6;color:#fff;border:none;padding:12px;font-size:16px;border-radius:5px;cursor:pointer}
+button:hover{background:#023e8a}
+footer{text-align:center;background:#0077b6;color:#fff;padding:15px;margin-top:20px}
+@media(max-width:700px){.about{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+<h1>Ayush Aswale</h1>
+<p>Data Science Student | Aspiring Software Developer</p>
+</header>
+
+<section class="about">
+<img src="profile.jpg" alt="Profile Picture">
+<div>
+<h2>About Me</h2>
+<p>Hello! I am <b>Ayush Aswale</b>, a B.Tech Data Science student at Symbiosis Institute of Technology. I enjoy programming, web development, and building innovative software projects.</p>
+</div>
+</section>
+
+<section>
+<h2>Education</h2>
+<ul><li><b>B.Tech in Data Science</b><br>Symbiosis Institute of Technology (2024–2028)</li></ul>
+</section>
+
+<section>
+<h2>Skills</h2>
+<div class="skills">
+<span>HTML</span><span>CSS</span><span>JavaScript</span><span>C</span><span>C++</span><span>Java</span><span>Python</span><span>SQL</span><span>MySQL</span><span>Power BI</span><span>Git</span>
+</div>
+</section>
+
+<section>
+<h2>Projects</h2>
+<div class="project">
+<h3>Interactive To-Do List</h3>
+<p>Responsive task management application using HTML, CSS and JavaScript.</p>
+</div>
+<div class="project">
+<h3>Face Recognition Attendance System</h3>
+<p>Attendance system using OpenCV and DeepFace.</p>
+</div>
+</section>
+
+<section>
+<h2>Contact Me</h2>
+<form>
+<input type="text" placeholder="Enter Your Name">
+<input type="email" placeholder="Enter Your Email">
+<textarea placeholder="Enter Your Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<footer>
+<p>&copy; 2026 Ayush Aswale | Personal Portfolio</p>
+</footer>
+</body>
+</html>
